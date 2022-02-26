@@ -26,18 +26,16 @@ public class SpawnTiles : MonoBehaviour
 
                 Vector3 tileBoundaries = tile.transform.GetComponent<SpriteRenderer>().bounds.size;
 
-                int fightR = Random.Range(0, 2);
-                int eventR = Random.Range(0, 2);
-                if (fightR == 1)
-                {
-                    GameObject fight = Instantiate(fightPrefab, new Vector3((float)((float)-tileBoundaries.x / 2+0.5), tileBoundaries.y / 2-1, 0), Quaternion.identity);
-                    fight.transform.SetParent(tile.transform, false);
-                }
+                int eventR = Random.Range(0, 4);
                 if (eventR == 1)
                 {
                     GameObject _event = Instantiate(eventPrefab, new Vector3(-tileBoundaries.x / 2 + 2, tileBoundaries.y / 2-1, 0), Quaternion.identity);
                     _event.transform.SetParent(tile.transform, false);
-
+                }
+                else
+                {
+                    GameObject fight = Instantiate(fightPrefab, new Vector3((float)((float)-tileBoundaries.x / 2 + 0.5), tileBoundaries.y / 2 - 1, 0), Quaternion.identity);
+                    fight.transform.SetParent(tile.transform, false);
                 }
 
             }
